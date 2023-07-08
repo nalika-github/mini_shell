@@ -30,16 +30,17 @@ int ft_findbuitin(char *str, char **env)
 		ft_env(env);
 		// printf("--env--\n");
 	if (ft_findstr(str, "exit", 4) == EXIT_SUCCESS)
-		printf("--exit--\n"); 
-	
+		printf("--exit--\n");
+
 	return (EXIT_SUCCESS);
 }
 
 int ft_main(char *find ,char **env)
 {
-	
+
 	// ft_heredoc();
 	ft_findbuitin(find, env);
 	// printf("main\n");
+	printf("Hello Pipe\n");
 	return (EXIT_SUCCESS);
 }
