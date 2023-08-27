@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:45:34 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/26 23:50:37 by marvin           ###   ########.fr       */
+/*   Updated: 2023/08/27 22:40:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct s_dict
 
 typedef struct s_rdr
 {
-	enum e_type	type; // infle outfile append heredoc
+	int			type; // infle outfile append heredoc
 	char		*file; // name of (infle outfile append heredoc)
 	struct s_cmd	*next; // before pipe
 	// int			index;
@@ -139,16 +139,16 @@ char	*prompt(void);
 
 /*  lexer.c  */
 
-int		lexer(char *line, t_env *env);
+int		lexer(char *line, t_minishell *env);
 
-/*  init_env.c  */
+/*  init_minishell.c  */
 
-// t_env	init_minishell();
+// t_minishell	init_minishell();
 
 /*  init_command_list.c  */
 
 int		slide_n_decide(t_list *lst, char *line);
-int		init_command_list(t_env **env, char *line);
+int		init_command_list(t_minishell **env, char *line);
 
 /*  grab.c  */
 
@@ -160,10 +160,10 @@ void	grab_to_lst(t_list **lst, char **line, int index);
 
 /*  tokenize  */
 
-int	tokenize(t_env **env);
+int	tokenize(t_minishell **env);
 
 /*  quotes_validate.c  */
 
-int	quotes_validate(t_env *env);
+int	quotes_validate(t_minishell *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:50:46 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/26 19:48:35 by marvin           ###   ########.fr       */
+/*   Updated: 2023/08/27 22:48:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	error_exit(t_minishell *ms, char *line)
 {
 	t_list	*lst;
 
+	(void)line;
 	lst = ms->lst;
 	printf("error\n");
 	ft_lstclear(&lst, &free);
@@ -46,15 +47,16 @@ int	lexer(char *line, t_minishell *ms)
 		return (error_exit(ms, line));
 	if (tokenize(&ms))
 		return (error_exit(ms, line));
+	printf("type = %d\n", ((t_token *)ms->lst->data)->type);
 	if (special_char_validate(ms))
 		return (error_exit(ms, line));
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
 	return (1);
 }
 
-	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
-	// ms->lst = ms->lst->next;
-	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
-	// ms->lst = ms->lst->next;
-	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
-	// ms->lst = ms->lst->next;
-	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+

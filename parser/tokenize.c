@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 10:59:50 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/26 19:47:58 by marvin           ###   ########.fr       */
+/*   Updated: 2023/08/27 22:50:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ static int	tag_token_start(int *tag_ctrl)
 		*tag_ctrl = CMD;
 		return (FPATH);
 	}
+	return (0);
 }
 
 int	tokenize(t_minishell **ms)
@@ -137,6 +138,7 @@ int	tokenize(t_minishell **ms)
 				tag_ctrl = search_empty(((t_token *)lst->data)->str);
 			((t_token *)lst->data)->type = tag_token(&tag_ctrl);
 		}
+		printf("type = %d\n", ((t_token *)lst->data)->type);
 		lst = lst->next;
 	}
 	return(0);

@@ -12,12 +12,12 @@
 
 #include "minishell.h"
 
-void	init_env(t_env *env, char **input_env, int *ac, char ***av)
-{
-	(void)ac;
-	(void)av;
-	env->dict = ft_getenv(input_env);
-}
+// void	init_minishell(t_minishell *env, char **input_minishell, int *ac, char ***av)
+// {
+// 	(void)ac;
+// 	(void)av;
+// 	env->dict = ft_getenv(input_minishell);
+// }
 
 int main(int ac, char **av, char **env)
 {
@@ -26,6 +26,9 @@ int main(int ac, char **av, char **env)
 	t_minishell	ms;
 
 	// init_ms(&ms, env, &ac, &av);
+	(void)ac;
+	(void)av;
+	(void)env;
 	while (1)
 	{
 		// รับ signal ใน while loop
@@ -37,12 +40,12 @@ int main(int ac, char **av, char **env)
 		add_history(line);
 		if(lexer(line, &ms))
 			continue ;
-		paser(&ms);
+		// paser(&ms);
 		// excute(&ms); รับ signal ใน while loop
 		// free_token(&ms.token);
 	}
 	// free_token(&ms.token); exit print
-	free(&line)
+	free(&line);
 	free(&ms);
 	return (0);
 }
