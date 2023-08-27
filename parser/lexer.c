@@ -1,0 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lexer.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/16 14:50:46 by ptungbun          #+#    #+#             */
+/*   Updated: 2023/08/26 19:48:35 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+static int	error_exit(t_minishell *ms, char *line)
+{
+	t_list	*lst;
+
+	lst = ms->lst;
+	printf("error\n");
+	ft_lstclear(&lst, &free);
+	return (1);
+}
+
+static int special_char_validate(t_minishell *ms)
+{
+	t_list	*lst;
+	t_token	*token;
+
+	lst = ms->lst;
+	lst = ft_lstlast(lst);
+	token = ((t_token *)(lst->data));
+	if(token->type == HEREDOC || token->type == INFILE || \
+	token->type == APPEND || token->type == OUTFILE || token->type == PIPE)
+		return (1);
+	return (0);
+}
+
+int	lexer(char *line, t_minishell *ms)
+{
+	if (init_command_list(&ms, line))
+		return (error_exit(ms, line));
+	if (!ms->lst)
+		return (1);
+	if (quotes_validate(ms))
+		return (error_exit(ms, line));
+	if (tokenize(&ms))
+		return (error_exit(ms, line));
+	if (special_char_validate(ms))
+		return (error_exit(ms, line));
+	return (1);
+}
+
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
+	// ms->lst = ms->lst->next;
+	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);

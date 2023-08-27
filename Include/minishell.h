@@ -21,7 +21,7 @@
 # include "color.h"
 
 
-# include <unistd.h> // read ,chdir 
+# include <unistd.h> // read ,chdir
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h> // open
@@ -29,7 +29,9 @@
 
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <sys/types.h> 
+# include <sys/types.h>
+
+# define WCMD "\033[1;33mcommand me!!!: \033[0m"
 
 enum e_type
 {
@@ -44,19 +46,19 @@ typedef struct s_rdr
 {
     enum e_type type;
     // int     type;
-    char    *file; // 
-    int     index; // for loop open file 
+    char    *file; //
+    int     index; // for loop open file
 } t_rdr ;
 
 typedef struct s_data
 {
-    t_rdr   **in_here; 
+    t_rdr   **in_here;
     t_rdr   **out_append;
     int     fd_in; // for last infille
     int     fd_out; // for last outfile
     char    **arg;
     char    **cmd;
-     
+
 } t_data;
 
 #endif
