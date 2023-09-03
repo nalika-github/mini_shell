@@ -34,6 +34,5 @@ char	*ft_strcat(char *s1, char *s2)
 		j++;
 	}
 	buf[i + j] = '\0';
-	free(s1);
 	return (buf);
 }

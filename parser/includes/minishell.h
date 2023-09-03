@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:45:34 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/27 22:40:50 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/02 16:56:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,26 +111,23 @@ typedef struct s_dict
 
 typedef struct s_rdr
 {
-	int			type; // infle outfile append heredoc
-	char		*file; // name of (infle outfile append heredoc)
-	struct s_cmd	*next; // before pipe
-	// int			index;
+	int			type;
+	char		*file;
 } t_rdr;
 
 typedef struct s_table
 {
-	t_rdr			*file; // redirect
+	t_list			*rdr; // redirect
 	char			**cmd;
-	struct s_table	*next;
 } t_table;
 
 typedef struct	s_minishell
 {
 	t_list	*lst;
-	t_table	*table;
+	t_list	*table;
 	char	**my_env;
 	t_dict	*dict;
-	size_t	n_cmd_arg;
+	size_t	n;
 }				t_minishell;
 
 /*  prompt.c  */
@@ -165,5 +162,13 @@ int	tokenize(t_minishell **env);
 /*  quotes_validate.c  */
 
 int	quotes_validate(t_minishell *env);
+
+/*  paser.c  */
+
+int	paser(t_minishell *ms);
+
+/*  contain_cmd_to_table.c  */
+
+int	contain_cmd_to_table(t_minishell **ms);
 
 #endif

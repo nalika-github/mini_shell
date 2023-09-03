@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strcat_n_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 18:28:22 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/29 22:12:11 by marvin           ###   ########.fr       */
+/*   Created: 2023/09/03 13:56:55 by ptungbun          #+#    #+#             */
+/*   Updated: 2023/09/03 13:57:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-
-t_list	*ft_lstnew(void *data)t_rdr
+char	*ft_strcat_n_free(char *s1, char *s2)
 {
-	t_list	*lst;
+	size_t	i;
+	size_t	j;
+	char	*buf;
 
-	lst = (t_list *)malloc(sizeof(t_list));
-	if (!lst)
+	buf = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s1)
 		return (0);
-	lst->next = 0;
-	lst->data = data;
-	return (lst);
+	i = 0;
+	while (s1[i])
+	{
+		buf[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		buf[i + j] = s2[j];
+		j++;
+	}
+	buf[i + j] = '\0';
+	free(s1);
+	free(s2);
+	return (buf);
 }
-
-typedef struct s_list
-{
-	void			*data; -> t_rdr
-	struct s_list	*next; -> NULL
-}					t_list;

@@ -40,7 +40,7 @@ int main(int ac, char **av, char **env)
 		add_history(line);
 		if(lexer(line, &ms))
 			continue ;
-		// paser(&ms);
+		paser(&ms);
 		// excute(&ms); รับ signal ใน while loop
 		// free_token(&ms.token);
 	}

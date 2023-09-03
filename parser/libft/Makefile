@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 13:50:38 by ptungbun          #+#    #+#              #
-#    Updated: 2023/07/22 21:03:54 by marvin           ###   ########.fr        #
+#    Updated: 2023/09/03 13:59:04 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,7 @@ SRCS		=	ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isalnum.c ft_isprint.c \
 				ft_issign.c ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstadd_back.c \
 				ft_lstsize.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_strcat.c \
 				ft_lstpop_bot.c ft_lstpop_top.c ft_atol.c ft_isspace.c ft_split_allsp.c \
-				ft_freesplite.c
-
+				ft_freesplite.c ft_strcat_n_free.c
 
 # Find all the .o files we want to build libft.a
 

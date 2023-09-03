@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 10:59:50 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/27 22:50:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/08/28 14:29:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ static int	tag_token(int *tag_ctrl)
 		*tag_ctrl = START;
 		return (PIPE);
 	}
+	else if (*tag_ctrl == FPATH)
+	{
+		*tag_ctrl = EMPTY;
+		return (FPATH);
+	}
 	return (0);
 }
 
@@ -112,7 +117,9 @@ static int	tag_token_start(int *tag_ctrl)
 		*tag_ctrl = CMD;
 		return (FPATH);
 	}
-	return (0);
+	if (*tag_ctrl == CMD)
+		*tag_ctrl = EMPTY;
+	return (CMD);
 }
 
 int	tokenize(t_minishell **ms)
@@ -138,7 +145,8 @@ int	tokenize(t_minishell **ms)
 				tag_ctrl = search_empty(((t_token *)lst->data)->str);
 			((t_token *)lst->data)->type = tag_token(&tag_ctrl);
 		}
-		printf("type = %d\n", ((t_token *)lst->data)->type);
+		// printf("tag = %d\n", ((t_token *)lst->data)->type);
+		// printf("str = %s\n", ((t_token *)lst->data)->str);
 		lst = lst->next;
 	}
 	return(0);

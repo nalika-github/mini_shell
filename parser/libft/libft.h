@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:51:40 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/07/22 21:03:39 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/03 13:58:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 typedef struct s_list
 {
 	void			*data;
+	struct s_list	*next;
+}					t_list;
+
+typedef struct s_list
+{
+	void			*data->t_table
 	struct s_list	*next;
 }					t_list;
 
@@ -67,6 +73,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				**ft_split(char const *s, char c);
 char				**ft_split_allsp(char const *s);
 char				*ft_strcat(char *s1, char *s2);
+char				*ft_strcat_n_free(char *s1, char *s2);
 
 t_list				*ft_lstnew(void *content);
 t_list				*ft_lstlast(t_list *lst);

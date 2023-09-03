@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 01:24:09 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/16 22:12:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/08/28 14:25:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	arg_logic(char *line)
 	size = 0;
 	while(!ft_isspace(line[size]) && !ft_ismetachar(line[size]) && line[size])
 		size++;
-	return(size + 1);
+	return(size);
 }
 
 size_t	quote_logic(char *line)
@@ -31,7 +31,7 @@ size_t	quote_logic(char *line)
 	size = 1;
 	while(line[size] != quote && !ft_ismetachar(line[size]) && line[size])
 		size++;
-	return(size + 1);
+	return(size);
 }
 
 size_t	metachar_logic(char *line)
@@ -59,6 +59,8 @@ char	*grab_n_slide(char **line, size_t (*logic)(char *))
 		(*line)++;
 		size--;
 	}
+	while(ft_isspace(*(*line)))
+		(*line)++;
 	return (str);
 }
 

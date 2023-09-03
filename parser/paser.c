@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 14:52:19 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/27 22:37:44 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/02 16:21:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ static int	error_exit(t_minishell *ms)
 
 int	paser(t_minishell *ms)
 {
-	if (expand_var(&ms))
-		return (error_exit(ms));
+	// if (expand_var(&ms))
+	// 	return (error_exit(ms));
 	// if (sanitize(&ms))
 	// 	return (error_exit(ms));
+	if (alloca_table(&ms))
+		return (error_exit(ms));
 	if (contain_cmd_to_table(&ms))
-		return (error_exit(ms)); 
+		return (error_exit(ms));
 	return (1);
 }
