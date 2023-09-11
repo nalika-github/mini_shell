@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:45:34 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/02 16:56:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/03 15:00:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,21 +104,21 @@ typedef struct	s_token
 
 typedef struct s_dict
 {
-	char *key;
-	char *value;
-	int	line; //total line of env
+	char	*key;
+	char	*value;
+	int		line; //total line of env
 } t_dict;
 
 typedef struct s_rdr
 {
-	int			type;
-	char		*file;
+	int		type;
+	char	*file;
 } t_rdr;
 
 typedef struct s_table
 {
-	t_list			*rdr; // redirect
-	char			**cmd;
+	t_list	*rdr; // redirect
+	char	**cmd;
 } t_table;
 
 typedef struct	s_minishell

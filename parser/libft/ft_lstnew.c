@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 18:28:22 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/29 22:12:11 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/03 15:16:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-t_list	*ft_lstnew(void *data)t_rdr
+t_list	*ft_lstnew(void *data)
 {
 	t_list	*lst;
 
@@ -23,9 +23,3 @@ t_list	*ft_lstnew(void *data)t_rdr
 	lst->data = data;
 	return (lst);
 }
-
-typedef struct s_list
-{
-	void			*data; -> t_rdr
-	struct s_list	*next; -> NULL
-}					t_list;
