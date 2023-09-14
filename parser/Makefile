@@ -23,7 +23,8 @@ BUILD_DIR		= ./build
 # Variable declaration of file
 
 SRCS			=	main.c prompt.c lexer.c grab.c init_command_list.c \
-					quotes_validate.c tokenize.c paser.c contain_cmd_to_table.c
+					quotes_validate.c tokenize.c paser.c contain_cmd_to_table.c \
+					get_table.c
 
 OBJS			=	$(SRCS:%.c=$(BUILD_DIR)/%.o)
 

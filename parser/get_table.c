@@ -6,74 +6,77 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 16:24:16 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/07 22:49:58 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/14 17:23:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*getcmd_n_slide(t_list **lst)
+static char	**getcmd_n_slide(t_list **lst)
 {
-	t_token token;
+	t_token *token;
 	char	*str;
+	char	**str_ar;
 
 	token = (*lst)->data;
 	str = NULL;
 	while (*lst && token->type != PIPE)
 	{
 		token = (*lst)->data;
-		if (str == NULL)
+		if (token->type == CMD && token->type == ARG)
 			str = ft_strdup(token->str);
-		else
-			str = ft_strcat_n_free(str, token->str);
 		*lst = (*lst)->next;
 	}
-	return (str);
+	return (str_ar);
 }
 
 int	get_cmd_to_table(t_minishell **ms)
 {
 	t_table	*table;
 	t_token	*token;
-	t_list	*node;
 	t_list	*lst;
 
 	(*ms)->table = NULL;
 	lst = (*ms)->lst;
 	while (lst)
 	{
-		node = ft_lstnew(malloc(sizeof(t_table)));
+		printf("check\n");
 		if ((*ms)->table == NULL)
-			(*ms)->table = node;
+			(*ms)->table = ft_lstnew(malloc(sizeof(t_table)));
 		else
-			ft_lstadd_back(&((*ms)->table), node);
+			ft_lstadd_back(&((*ms)->table), ft_lstnew(malloc(sizeof(t_table))));
 		table = (ft_lstlast((*ms)->table))->data;
-		table->cmd = getcmd_n_slide(&lst);
+		(table->cmd) = getcmd_n_slide(&lst);
 		token = lst->data;
 		if (token->type == PIPE)
 			lst = lst->next;
 	}
+	return (0);
 }
 
 static void	getrdr_n_slide(t_list **rdr_lst, t_list **lst)
 {
-	t_token token;
-	t_rdr	rdr;
+	t_token *token;
+	t_rdr	*rdr;
+	int		i;
 
-	rdr = (*rdr_lst)->data;
-	token = (*lst)->data;
+	i = 0;
 	while (*lst && token->type != PIPE)
 	{
+		token = (*lst)->data;
 		if (token->type == INFILE || token->type == OUTFILE || \
 		token->type == HEREDOC || token->type == APPEND)
 		{
+			if(i == 0)
+				*rdr_lst = ft_lstnew(malloc(sizeof(t_rdr)));
+			else
+				ft_lstadd_back(rdr_lst, ft_lstnew(malloc(sizeof(t_rdr))));
+			rdr = (ft_lstlast(*rdr_lst))->data;
 			rdr->type = token->type;
-			*(rdr->file) = *(token->str);
-			rdr_lst = rdr_lst->next;
-			rdr = (*rdr_lst)->data;
+			rdr->file = token->str;
+			i++;
 		}
-		lst = lst->next;
-		token = (*lst)->data;
+		*lst = (*lst)->next;
 	}
 	if (token->type == PIPE)
 		*lst = (*lst)->next;
@@ -81,16 +84,17 @@ static void	getrdr_n_slide(t_list **rdr_lst, t_list **lst)
 
 int	get_rdr_to_table(t_minishell **ms)
 {
-	t_list	table_lst;
-	t_list	lst;
-	t_list	rdr_lst;
+	t_list	*table_lst;
+	t_list	*lst;
+	t_list	*rdr_lst;
 
 	table_lst = (*ms)->table;
 	lst = (*ms)->lst;
 	while(table_lst)
 	{
-		rdr_lst = ((t_table *)(table_lst->data)->rdr);
+		rdr_lst = (((t_table *)(table_lst->data))->rdr);
 		getrdr_n_slide(&rdr_lst, &lst);
 		table_lst = table_lst->next;
 	}
+	return (0);
 }

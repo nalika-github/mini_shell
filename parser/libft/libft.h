@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:51:40 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/03 13:58:38 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:52:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@
 typedef struct s_list
 {
 	void			*data;
-	struct s_list	*next;
-}					t_list;
-
-typedef struct s_list
-{
-	void			*data->t_table
 	struct s_list	*next;
 }					t_list;
 
