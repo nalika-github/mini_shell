@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 14:50:46 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/14 17:10:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/14 19:25:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	lexer(char *line, t_minishell *ms)
 		return (error_exit(ms, line));
 	if (special_char_validate(ms))
 		return (error_exit(ms, line));
-	// ms->lst = ms->lst->next;
 	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);
 	// ms->lst = ms->lst->next;
 	// printf("type = %d\n", ((t_token *)ms->lst->data)->type);

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 16:24:16 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/14 17:23:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/14 20:20:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ static char	**getcmd_n_slide(t_list **lst)
 	str = NULL;
 	while (*lst && token->type != PIPE)
 	{
-		token = (*lst)->data;
 		if (token->type == CMD && token->type == ARG)
+		{
 			str = ft_strdup(token->str);
+			str_ar = ft_insertstrtoar(str_ar, str);
+			free(str);
+		}
 		*lst = (*lst)->next;
+		if (*lst)
+			token = (*lst)->data;
 	}
 	return (str_ar);
 }
@@ -33,22 +38,19 @@ static char	**getcmd_n_slide(t_list **lst)
 int	get_cmd_to_table(t_minishell **ms)
 {
 	t_table	*table;
-	t_token	*token;
 	t_list	*lst;
 
 	(*ms)->table = NULL;
 	lst = (*ms)->lst;
 	while (lst)
 	{
-		printf("check\n");
 		if ((*ms)->table == NULL)
 			(*ms)->table = ft_lstnew(malloc(sizeof(t_table)));
 		else
 			ft_lstadd_back(&((*ms)->table), ft_lstnew(malloc(sizeof(t_table))));
 		table = (ft_lstlast((*ms)->table))->data;
 		(table->cmd) = getcmd_n_slide(&lst);
-		token = lst->data;
-		if (token->type == PIPE)
+		if (lst && ((t_token *)((lst->data)))->type == PIPE)
 			lst = lst->next;
 	}
 	return (0);

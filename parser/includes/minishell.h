@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:45:34 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/14 16:09:36 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/14 18:26:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,30 +96,36 @@ enum e_prtexec
 
 /*  Define Structure  */
 
+typedef struct	s_dict_value
+{
+	char *key;
+	char *value;
+}				t_dict_value;
+
 typedef struct	s_token
 {
 	int		type;
 	char	*str;
 }				t_token;
 
-typedef struct s_dict
+typedef struct	s_dict
 {
 	char	*key;
 	char	*value;
 	int		line; //total line of env
-} t_dict;
+}				t_dict;
 
-typedef struct s_rdr
+typedef struct	s_rdr
 {
 	int		type;
 	char	*file;
-} t_rdr;
+}				t_rdr;
 
-typedef struct s_table
+typedef struct	s_table
 {
 	t_list	*rdr; // redirect
 	char	**cmd;
-} t_table;
+}				t_table;
 
 typedef struct	s_minishell
 {

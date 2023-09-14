@@ -19,6 +19,36 @@
 // 	env->dict = ft_getenv(input_minishell);
 // }
 
+static void	print_table(t_minishell ms)
+{
+	t_list	*tb_lst;
+	t_list	*rdr_lst;
+	t_rdr	*rdr;
+	t_table	*table;
+	int		i;
+
+	tb_lst = ms.table;
+	while (tb_lst)
+	{
+		table = tb_lst->data;
+		rdr_lst = table->rdr;
+		i = 0;
+		while ((table->cmd)[i])
+		{
+			printf("table->cmd[%d] =\n", i);
+			i++;
+		}
+		while (rdr_lst)
+		{
+			rdr = rdr_lst->data;
+			printf("rdr->file = %s\n", rdr->file);
+			printf("rdr->type = %d\n", rdr->type);
+			rdr_lst = rdr_lst->next;
+		}
+		tb_lst = tb_lst->next;
+	}
+}
+
 int main(int ac, char **av, char **env)
 {
 	char 		*line;
@@ -41,6 +71,7 @@ int main(int ac, char **av, char **env)
 		if(lexer(line, &ms))
 			continue ;
 		paser(&ms);
+		// print_table(ms);
 		// excute(&ms); รับ signal ใน while loop
 		// free_token(&ms.token);
 	}
