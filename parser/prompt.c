@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:36:50 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/07/18 21:46:15 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/17 02:32:50 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
+
+char	*ft_strjoin(char *s1, char  *s2)
+{
+	char	*str;
+	size_t	len;
+
+	if (!s1 && !s2)
+		return (ft_strdup(""));
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = malloc(sizeof(char) * len);
+	if (!str)
+		return (0);
+	ft_memmove(str, s1, ft_strlen(s1));
+	ft_memmove(str + ft_strlen(s1), s2, ft_strlen(s2));
+	str[len - 1] = '\0';
+	return (str);
+}
 
 static char	*strjoin_to_ret(char *s1, char *s2)
 {

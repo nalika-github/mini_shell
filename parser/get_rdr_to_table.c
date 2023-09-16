@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_rdr_to_table.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 16:24:16 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/16 23:49:10 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/17 02:30:44 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 static void	get_rdr_n_slide(t_list **rdr_lst, t_list **lst)
 {

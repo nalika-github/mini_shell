@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 16:25:59 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/12 14:00:01 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/17 02:30:40 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<"minishell.h">
+#include "../include/minishell.h"
 
 void expand_var(t_minishell **ms)
 {

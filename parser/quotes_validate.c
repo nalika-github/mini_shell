@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_validate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: nkietwee <nkietwee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:26:21 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/27 22:44:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/17 02:42:05 by nkietwee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 // void	trim_quote(char *str)
 // {
@@ -24,20 +24,6 @@
 // 	}
 // 	str[i - 2] = '\0';
 // }
-
-int	ft_isvalide_quote(char *str, char quote)
-{
-	int		i;
-
-	i = 1;
-	while (str[i])
-	{
-		if (str[i] == quote)
-			return (1);
-		i++;
-	}
-	return(0);
-}
 
 int	quotes_validate(t_minishell *env)
 {
