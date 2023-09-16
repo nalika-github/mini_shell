@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 11:45:34 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/14 18:26:41 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/16 16:08:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,9 +173,12 @@ int	quotes_validate(t_minishell *env);
 
 int	paser(t_minishell *ms);
 
-/*  get_table.c  */
+/*  get_cmd_to_table.c  */
 
 int	get_cmd_to_table(t_minishell **ms);
+
+/*  get_rdr_to_table.c  */
+
 int	get_rdr_to_table(t_minishell **ms);
 
 #endif

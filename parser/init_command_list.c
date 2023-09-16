@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 13:52:18 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/08/28 14:17:12 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/16 23:48:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ int	slide_n_decide(t_list *lst, char *line)
 	return (-1);
 }
 
+void	print_lst(t_list *lst)
+{
+	while(lst)
+	{
+		printf("token->str = %s\n", ((t_token*)lst->data)->str);
+		lst = lst->next;
+	}
+}
+
 int	init_command_list(t_minishell **ms, char *line)
 {
 	t_list	*lst;
@@ -43,6 +52,7 @@ int	init_command_list(t_minishell **ms, char *line)
 		if (index == -1)
 			return (1);
 		grab_to_lst(&lst, &ptr_line, index);
+		print_lst(lst);
 	}
 	(*ms)->lst = lst;
 	return (0);

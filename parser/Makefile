@@ -24,7 +24,7 @@ BUILD_DIR		= ./build
 
 SRCS			=	main.c prompt.c lexer.c grab.c init_command_list.c \
 					quotes_validate.c tokenize.c paser.c contain_cmd_to_table.c \
-					get_table.c
+					get_cmd_to_table.c get_rdr_to_table.c
 
 OBJS			=	$(SRCS:%.c=$(BUILD_DIR)/%.o)
 
@@ -38,7 +38,7 @@ LIBLINK			=	-lft -lminishell -lreadline
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT) $(LIBMINISHELL)
 	$(CC) $(CFLAGS) $(OPENDIR) $(OBJS) -o $(NAME) $(LIBLINK)
 
 $(OBJS): $(BUILD_DIR)/%.o: %.c

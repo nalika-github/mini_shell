@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 15:51:40 by ptungbun          #+#    #+#             */
-/*   Updated: 2023/09/14 18:11:55 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/16 16:38:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char				*ft_strcat(char *s1, char *s2);
 char				*ft_strcat_n_free(char *s1, char *s2);
 char				**ft_split(char const *s, char c);
 char				**ft_split_allsp(char const *s);
-char				**ft_insertstrtoar(char **str_ar, char *insert_str);
 
 t_list				*ft_lstnew(void *content);
 t_list				*ft_lstlast(t_list *lst);
